@@ -19,3 +19,9 @@ const Route = use('Route')
 Route.on('/').render('welcome')
 Route.get('books/', 'BookController.index')
 Route.get('books/:book_id', 'BookController.show').as('show_book')
+
+Route.get('authors/', 'AuthorController.index').as('main_author_page')
+// we move create before author id because if we don't do so, the program will substitute create as author id.
+Route.get('authors/create', 'AuthorController.create').as('create_author')
+Route.post('authors/create', 'AuthorController.processCreate')
+Route.get('authors/:author_id', 'AuthorController.authorInfo').as('show_author')
