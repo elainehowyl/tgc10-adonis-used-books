@@ -24,4 +24,7 @@ Route.get('authors/', 'AuthorController.index').as('main_author_page')
 // we move create before author id because if we don't do so, the program will substitute create as author id.
 Route.get('authors/create', 'AuthorController.create').as('create_author')
 Route.post('authors/create', 'AuthorController.processCreate')
+Route.get('authors/update/:author_id', 'AuthorController.update').as('update')
+Route.post('authors/update/:author_id', 'AuthorController.processUpdate')
+Route.get('authors/delete/:author_id', 'AuthorController.delete').as('delete')
 Route.get('authors/:author_id', 'AuthorController.authorInfo').as('show_author')

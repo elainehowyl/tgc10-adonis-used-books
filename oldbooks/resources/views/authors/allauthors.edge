@@ -14,13 +14,16 @@
    <div class="container">
    <h1>Show All Authors</h1>
    <a href="{{route('create_author')}}">
-     <button class="btn-primary">Add New Author</button>
+     <button class="btn btn-primary">Add New Author</button>
    </a>
     <table class="table">
       <tr>
         <th>Author First Name: </th>
         <th>Author Last Name: </th>
         <th>Date Of Birth: </th>
+        <th>Info: </th>
+        <th>Update: </th>
+        <th>To delete: </th>
       </tr>
       @each(author in authors)
       <tr>
@@ -30,6 +33,16 @@
         <td>
           <a href="{{ route('show_author', {author_id:author.id}) }}">
             Author Info
+          </a>
+        </td>
+        <td>
+          <a href="{{ route('update', {author_id:author.id}) }}">
+            <button class="btn btn-success">Update</button>
+          </a>
+        </td>
+        <td>
+          <a href="{{ route('delete', {author_id:author.id}) }}">
+            <button class="btn btn-danger">Delete</button>
           </a>
         </td>
       </tr>

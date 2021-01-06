@@ -27,7 +27,29 @@ class AuthorController {
     author.dateofbirth = newAuthor.dob
     await author.save()
     response.route('main_author_page')
+  }
 
+  async update({request, params, view}){
+    let author = await Authors.find(request.params.author_id)
+    return view.render('authors/updateauthor', {
+      "author":author.toJSON()
+    })
+  }
+
+  async processUpdate({request, response}){
+    let author = await Authors.find(request.params.author_id)
+    let updatedAuthor = request.post()
+    author.firstname = updatedAuthor.firstname
+    author.lastname = updatedAuthor.lastname
+    author.dateofbirth = updatedAuthor.dob
+    await author.save()
+    response.route('main_author_page')
+  }
+
+  async delete({request, response}){
+    let author = await Authors.find(request.params.author_id)
+    await author.delete()
+    response.route('main_author_page')
   }
 }
 

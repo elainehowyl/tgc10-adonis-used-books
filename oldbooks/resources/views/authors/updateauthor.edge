@@ -1,0 +1,21 @@
+@layout('base')
+@section('content')
+<h1>Update Author</h1>
+<form method="post">
+{{csrfField()}}
+<div>
+<label>First Name: </label>
+<input type="text" name="firstname" value="{{author.firstname}}"/>
+</div>
+<div>
+<label>Last Name: </label>
+<input type="text" name="lastname" value="{{author.lastname}}"/>
+</div>
+<div>
+<label>Date Of Birth: </label>
+<input type="date" name="dob" value="{{author.dateofbirth}}"/>
+</div>
+<button type="submit">Update</button>
+</form>
+@endsection
+@endlayout
